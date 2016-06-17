@@ -300,7 +300,7 @@
 		};
 
 		cc.convert.keyword.rgb = function (keyword) {
-			return cssKeywords[keyword];
+			return cc.cssKeywords[keyword];
 		};
 
 		cc.convert.rgb.xyz = function (rgb) {
@@ -923,7 +923,6 @@
 		var models = Object.keys(cc.convert);
 
 		models.forEach(function (fromModel) {
-
 			Object.defineProperty(cc.convert[fromModel], 'channels', {value: cc.convert[fromModel].channels});
 
 			var routes = route(fromModel);
@@ -936,6 +935,8 @@
 				cc.convert[fromModel][toModel].raw = wrapRaw(fn);
 			});
 		});
+
+		return cc.convert;
 
 		function buildGraph() {
 			var graph = {};
